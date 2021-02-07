@@ -1,6 +1,6 @@
 
 
-/* **********Upper Section************** */
+
 body{
     background: gold;
 }
@@ -11,6 +11,11 @@ body{
     letter-spacing: 1px;
     /* background: gold; */
 }
+
+
+/* **********Upper Section************** */
+
+
 .main-container{
     width: 100%;
     /* background-color: gold; */
