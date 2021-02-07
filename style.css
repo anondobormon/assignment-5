@@ -1,15 +1,20 @@
+
+
+/* **********Upper Section************** */
+body{
+    background: gold;
+}
 *{
     margin: 0;
     padding: 0;
-
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    /* background: gold; */
 }
-
-
-
 .main-container{
     width: 100%;
-    background-color: gold;
-    height: 1200px;
+    /* background-color: gold; */
+    height: 100%;
 }
 .container{
     width: 95%;
@@ -20,19 +25,28 @@
 }
 
 .menu-bar{
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     /* margin-right: ; */
 }
+
+.menu-bar h2{
+    padding: 10px;
+    padding-left: 10px;
+}
+
 .side-menu{
     display: flex;
     
 }
 .side-menu p{
     padding: 10px;
+    font-size: 13px;
 }
 
 .search{
+    padding-top: 20px;
     width: 50%;
     margin: 0px auto;
     position: relative;
@@ -52,12 +66,14 @@
     height: 37px;
     border-radius: 5px;
     border: 1px solid black;
-
+    background-color: #40407a;
+    color: white;
 }
 
 
 
 
+/* **********main-body section*************** */
 
 
 
@@ -68,18 +84,14 @@
     grid-gap: 10px;
     margin: 50px 50px;
 }
-
-
 .food-details{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 5px;
     border-radius: 10px;
     overflow: hidden;
     height: 280px;
-    background-color: white;
-    
+    background-color: white;   
 }
-
 .foodImg{
     cursor: pointer;
     width: 100%;
@@ -90,22 +102,38 @@
 .food-details h3{
     text-align: center;
     cursor: pointer;
+    letter-spacing: 0px;
+    font-size: 15px;
+    padding-top: 15px;
 }
 
+
+
+
+/* *********Food Details section***************** */
 
 
 #main-details-bar{
     display: none;
 }
 
-#details-bar{
-    width: 50%;
-    height: 300px;
-    margin: 20px auto;
-    position: relative;
-    border: 1px solid black;
+.food-info{
+    /* border: 1px solid black; */
     overflow: hidden;
     border-radius: 10px;
+    width: 50%;
+    height: 600px;
+    margin: 20px auto;
+    position: relative;
+    background-color: white;
+}
+
+#details-bar{
+    height: 300px;
+    /* border: 1px solid black; */
+
+    overflow: hidden;
+    /* border-radius: 10px; */
 }
 #details-bar img{
     display: block;
@@ -113,16 +141,23 @@
     position: relative;
     margin-top: -20%;
     width: 100%;
-
-    
+}
+#details-bar p{
+    display: inline;
+    right: 20px;
+    top: 15px;
+    position: absolute;
+    cursor: pointer;
+    color: white;
 
 }
 
+
 #information-bar{
-    width: 50%;
+    width: 100%;
     margin: 20px auto;
     position: relative;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 #information-bar h2{
     margin-left: 20px;
