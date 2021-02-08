@@ -8,17 +8,21 @@
 document.getElementById('search-btn').addEventListener('click', function () {
     const food = document.getElementById('food-name').value;
 
-    if (food.length == 1) {
+    if (food.length <= 1) {
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${food}`)
             .then(res => res.json())
             .then(data => displayItem(data))
-            .catch(Error => alert('Something Wrong'))
+            .catch(Error => errorMassage())
+            hideDetailsAuto()
+            
     }
     else {
         fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${food}`)
             .then(res => res.json())
             .then(data => displayItem(data))
-            .catch(Error => alert('Something Wrong'))
+            .catch(Error => errorMassage(), hideDetailsAuto())
+            hideDetailsAuto()
+            
     }
 })
 
@@ -26,9 +30,16 @@ document.getElementById('search-btn').addEventListener('click', function () {
 
 const displayItem = foodItems => {
     const eachFood = foodItems.meals;
+
     // console.log(eachFood);
     const foodsItemContainer = document.getElementById('foods-item');
     foodsItemContainer.innerHTML = "";
+
+    // ****this is for hide error massage*****
+
+    document.getElementById('error-message').style.display = 'none';
+
+
     eachFood.map(foods => {
         const foodName = foods.strMeal;
         const foodImage = foods.strMealThumb;
@@ -36,8 +47,7 @@ const displayItem = foodItems => {
         foodDiv.className = 'food-details';
         const foodsLists = `
         <img onclick="foodDetaills('${foodName}')" class="foodImg" src="${foodImage}" alt="">
-        <h3>${foodName}</h3>
-        `;
+        <h3>${foodName}</h3>`;
         foodDiv.innerHTML = foodsLists;
         foodsItemContainer.append(foodDiv);
     });
@@ -67,12 +77,12 @@ const foodsExtraDetails = testyFood => {
         <h2>${testyFood.strMeal}</h2>
         <h4>${testyFood.strCategory}</h4>
         <ul>
-            <li>${testyFood.strIngredient13}</li>
-            <li>${testyFood.strIngredient10}</li>
-            <li>${testyFood.strIngredient3}</li>
-            <li>${testyFood.strIngredient2}</li>
-            <li>${testyFood.strIngredient12}</li>
-            <li>${testyFood.strIngredient5}</li>
+            <li><i class="fas fa-check-square"></i> ${testyFood.strIngredient13}</li>
+            <li><i class="fas fa-check-square"></i> ${testyFood.strIngredient10}</li>
+            <li><i class="fas fa-check-square"></i> ${testyFood.strIngredient2}</li>
+            <li><i class="fas fa-check-square"></i> ${testyFood.strIngredient3}</li>
+            <li><i class="fas fa-check-square"></i> ${testyFood.strIngredient12}</li>
+            <li><i class="fas fa-check-square"></i> ${testyFood.strIngredient5}</li>
         </ul>
         `;
 }
@@ -82,4 +92,13 @@ function closeDetail() {
     displayDetail.style.display = 'none';
 }
 
+// *********hide Food Details when search again************
 
+const hideDetailsAuto = () => {
+    document.getElementById('main-details-bar').style.display = 'none';
+}
+
+const errorMassage = () => {
+    document.getElementById('error-message').style.display = 'block';
+    document.getElementById('foods-item').innerHTML = "";
+}
